@@ -66,7 +66,6 @@ const prompt = () => {
 }
 
 function createContant(answers) {
-    console.log(answers);
 
     let typeLicense
 
