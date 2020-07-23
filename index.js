@@ -53,26 +53,51 @@ const questions = [{
         message: "Describe the test to be done on the application usage.",
         name: "test"
     },
+    {
+        type: "input",
+        name: "contribution",
+        message: "Enter contributing necessities for this project:"
+    }
 
 ];
 
 const prompt = () => {
-    return inquirer.prompt(questions).then((response) => {
-        const userName = response.userName;
-        const email = response.email;
-        const projectName = response.projectName;
-        const install = response.install;
-        const license = response.license;
-        const description = response.description;
-        const usage = response.usage;
-        const test = response.test;
-    });
+    return inquirer.prompt(questions);
 }
 
-const createContant = (answers) => {
+function createContant(answers) {
     console.log(answers);
-    return `# Project Title: ${answers.projectName}
-    ![License](https://img.shields.io/badge/License-${answers.license}-green)
+
+    let typeLicense
+
+    switch (answers.license) {
+        case 'MIT License':
+            typeLicense = '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)'
+            break;
+        case 'GNU Lesser General Public License v3.0':
+            typeLicense = '[![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)'
+            break;
+        case 'Mozilla Public License 2.0':
+            typeLicense = '[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)'
+            break;
+        case 'GNU Affero General Public License v3.0':
+            typeLicense = '[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)'
+            break;
+        case 'The Unlicense':
+            typeLicense = '[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)'
+            break;
+        case 'Apache License 2.0':
+            typeLicense = '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)'
+            break;
+        case 'GNU General Public License v3.0':
+            typeLicense = '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)'
+            break;
+    }
+
+    return `# Project Title: ${answers.projectName},
+
+    ${typeLicense}
+
     This project was developed by [${answers.userName}](https://github.com/${answers.userName}).
     
     ## Table of Contents
@@ -102,7 +127,12 @@ const createContant = (answers) => {
 
     # Contribution:
     ${answers.contribution}
-    `;
+    
+    # Questions
+    If any questions about the repo, contact me on ${answers.email}. 
+    My GitHub profile is [Github profile](https://github.com/${answers.userName}). 
+    
+  `;
 }
 
 const writeFile = (content) => {
@@ -120,7 +150,7 @@ const writeFile = (content) => {
 const init = async() => {
     try {
         const answers = await prompt();
-        console.log(answers);
+
         const content = createContant(answers);
         await writeFile(content);
     } catch (error) {
