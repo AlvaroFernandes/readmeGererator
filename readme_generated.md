@@ -4,13 +4,13 @@
 
   This project was developed by [AlvaroFernandes](https://github.com/AlvaroFernandes).
   
-  ## Table of Contents
-  ** [Description](#Description)
-  ** [Install Instructions](#Installation)
-  ** [License](#License)
-  ** [Usage](#Usage)
-  ** [Tests](#Tests)
-  ** [Contribution](#Contribution)
+  ## Table of Contents 
+  * [Description](#Description)
+  * [Install Instructions](#Installation)
+  * [License](#License)
+  * [Usage](#Usage)
+  * [Tests](#Tests)
+  * [Contribution](#Contribution)
 
   
   

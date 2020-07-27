@@ -34,12 +34,12 @@ function generateMarkdown(answers) {
   This project was developed by [${answers.userName}](https://github.com/${answers.userName}).
   
   ## Table of Contents
-  ** [Description](#Description)
-  ** [Install Instructions](#Installation)
-  ** [License](#License)
-  ** [Usage](#Usage)
-  ** [Tests](#Tests)
-  ** [Contribution](#Contribution)
+  * [Description](#Description)
+  * [Install Instructions](#Installation)
+  * [License](#License)
+  * [Usage](#Usage)
+  * [Tests](#Tests)
+  * [Contribution](#Contribution)
 
   
   
